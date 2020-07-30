@@ -1899,7 +1899,7 @@ HTML;
                 'd' => $discussion->id,
                 'sesskey' => sesskey(),
             ]);
-            $commands['pin'] = $this->render_ax_button($pinurl, $pintext, $pinlink, $discussion->id, 'post');
+            $commands['pin'] = $this->render_ax_button($pinurl, $pintext, 'post', $pinlink, $discussion->id);
         }
 
         return $commands;
@@ -1914,7 +1914,7 @@ HTML;
      * @param int $discussion
      * @return string
      */
-    public function render_ax_button(moodle_url $url, $content, $pinlink, $discussion, $method = 'post') {
+    public function render_ax_button(moodle_url $url, $content, $method = 'post', $pinlink = 0, $discussion = 0) {
         global $PAGE;
 
         $PAGE->requires->js_call_amd('mod_hsuforum/accessibility', 'init', array());
