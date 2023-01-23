@@ -1250,7 +1250,7 @@ HTML;
                 'course' => $cm->course,
                 'hsuforum' => $cm->instance));
         }
-        
+
         $postcontent = format_text($message, $post->messageformat, $options, $cm->course);
 
         if (!empty($search)) {
@@ -1708,7 +1708,7 @@ HTML;
         }
         if ($canattach) {
             $files .= <<<HTML
-                <label class="editor-attachments">                   
+                <label class="editor-attachments">
                     <input type="file" name="attachment[]" multiple="multiple" />
                 </label>
 HTML;
@@ -1899,7 +1899,7 @@ HTML;
                 'd' => $discussion->id,
                 'sesskey' => sesskey(),
             ]);
-            $commands['pin'] = $this->render_ax_button($pinurl, $pintext, 'post', $pinlink, $discussion->id);
+            $commands['pin'] = $this->render_ax_button($pinurl, $pintext, $pinlink, $discussion->id, 'post');
         }
 
         return $commands;
@@ -1914,7 +1914,7 @@ HTML;
      * @param int $discussion
      * @return string
      */
-    public function render_ax_button(moodle_url $url, $content, $method = 'post', $pinlink, $discussion) {
+    public function render_ax_button(moodle_url $url, $content, $pinlink, $discussion, $method = 'post') {
         global $PAGE;
 
         $PAGE->requires->js_call_amd('mod_hsuforum/accessibility', 'init', array());
