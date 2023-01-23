@@ -290,7 +290,7 @@ class mod_hsuforum_mail_testcase extends advanced_testcase {
 
         // And next event should be the 'notification_sent' one.
         $event = $events[1];
-        
+
         $this->assertInstanceOf('\core\event\notification_sent', $event);
         $this->assertEquals($author->id, $event->userid);
         $this->assertEquals($recipient->id, $event->relateduserid);
@@ -993,8 +993,8 @@ class mod_hsuforum_mail_testcase extends advanced_testcase {
                     'contents' => array(
                         '~{$a',
                         '~&(amp|lt|gt|quot|\#039);(?!course)',
-                        'Attachments example.txt:\n' .
-                            $CFG->wwwroot.'/pluginfile.php/\d*/mod_hsuforum/attachment/\d*/example.txt\n',
+                        'Attachments example.txt:\s+' .
+                            $CFG->wwwroot.'/pluginfile.php/\d*/mod_hsuforum/attachment/\d*/example.txt\s+',
                         'Hello Moodle', 'Moodle Forum', 'Welcome.*Moodle', 'Love Moodle', '1\d1'
                     ),
                 ),
@@ -1052,12 +1052,12 @@ class mod_hsuforum_mail_testcase extends advanced_testcase {
         $newcase['expectations'][0]['contents'] = array(
             '~{$a',
             '~&(amp|lt|gt|quot|\#039);(?!course)',
-            'Attachments example.txt:\n' .
-            $CFG->wwwroot.'/pluginfile.php/\d*/mod_hsuforum/attachment/\d*/example.txt\n',
+            'Attachments example.txt:\s+' .
+            $CFG->wwwroot.'/pluginfile.php/\d*/mod_hsuforum/attachment/\d*/example.txt\s+',
             'Text and image', 'Moodle Forum',
-            'Welcome to Moodle, *\n.*'
+            'Welcome to Moodle, *\s+.*'
                 .$CFG->wwwroot.'/pluginfile.php/\d+/mod_hsuforum/post/\d+/'
-                .'Screen%20Shot%202016-03-22%20at%205\.54\.36%20AM%20%281%29\.png *\n.*!',
+                .'Screen%20Shot%202016-03-22%20at%205\.54\.36%20AM%20%281%29\.png *\s+.*!',
             'Love Moodle', '1\d1');
         $textcases['Text mail with text+image message i.e. @@PLUGINFILE@@ token handling'] = array('data' => $newcase);
 
