@@ -1050,7 +1050,7 @@ class mod_hsuforum_external extends external_api {
             $discussion->pinned = HSUFORUM_DISCUSSION_UNPINNED;
         }
         $fakemform = $options['attachmentsid'];
-        if ($discussionid = hsuforum_add_discussion($discussion, $fakemform)) {
+        if ($discussionid = hsuforum_add_discussion($discussion, strval($fakemform))) {
 
             $discussion->id = $discussionid;
 
